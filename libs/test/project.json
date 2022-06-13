@@ -1,0 +1,38 @@
+{
+	"projectType": "library",
+	"sourceRoot": "libs/test/src",
+	"prefix": "update-test",
+	"targets": {
+		"build": {
+			"executor": "@nrwl/angular:package",
+			"outputs": ["dist/libs/test"],
+			"options": {
+				"project": "libs/test/ng-package.json"
+			},
+			"configurations": {
+				"production": {
+					"tsConfig": "libs/test/tsconfig.lib.prod.json"
+				},
+				"development": {
+					"tsConfig": "libs/test/tsconfig.lib.json"
+				}
+			},
+			"defaultConfiguration": "production"
+		},
+		"test": {
+			"executor": "@nrwl/jest:jest",
+			"outputs": ["coverage/libs/test"],
+			"options": {
+				"jestConfig": "libs/test/jest.config.ts",
+				"passWithNoTests": true
+			}
+		},
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"options": {
+				"lintFilePatterns": ["libs/test/**/*.ts", "libs/test/**/*.html"]
+			}
+		}
+	},
+	"tags": []
+}
